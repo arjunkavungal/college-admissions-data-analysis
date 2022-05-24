@@ -1,0 +1,16 @@
+---
+title: "SAT math score to SAT reading score ratio"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+df = read_csv("/Users/arjunkavungal/Downloads/MERGED2015_16_PP.csv")
+df
+```
+```{r}
+df = df %>% mutate(ratio = as.numeric(SATMT25) / as.numeric(SATVR25))
+```
+```{r}
+df[order(-df$ratio),] %>% select('INSTNM','SATVR25',"SATMT25",'ratio')
+```
